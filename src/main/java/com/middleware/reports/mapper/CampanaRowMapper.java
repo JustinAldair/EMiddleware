@@ -8,7 +8,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class campanaRowMapper implements RowMapper<ReportVo>{
+public class CampanaRowMapper implements RowMapper<ReportVo>{
     @Override
     public ReportVo mapRow(ResultSet rs, int rowNum) throws SQLException {
         //Mapear datos de la campaña de la tabla maestro
