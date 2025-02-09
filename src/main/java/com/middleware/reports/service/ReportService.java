@@ -8,6 +8,6 @@ import java.sql.Timestamp;
 import java.util.List;
 
 public interface ReportService {
-    public ReportResponse generarReport(ReportRequest reportRequest);
+    public ReportResponse generarReport(String fecha);
 
 }

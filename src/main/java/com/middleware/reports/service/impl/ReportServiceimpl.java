@@ -14,18 +14,32 @@ import java.util.List;
 public class ReportServiceimpl implements ReportService {
     @Autowired
     private ReportDao reportDao;
+//    @Override
+//    public ReportResponse generarReport(ReportRequest reportRequest) {
+//        String fechaSolicitada = reportRequest.getFechaIngresada() + "00:00:00";
+//        Timestamp fechaTimestamp = Timestamp.valueOf(fechaSolicitada);
+//
+//        List<ReportVo> lisResultadosVo = reportDao.obtenerReportesPorFecha(fechaTimestamp);
+//
+//        ReportResponse response = new ReportResponse();
+//        response.setFecha(reportRequest.getFechaIngresada());
+//        response.setTotalCampana(lisResultadosVo.size());
+//        response.setCampanas(lisResultadosVo);
+//
+//        return response;
+
     @Override
-    public ReportResponse generarReport(ReportRequest reportRequest) {
-        String fechaSolicitada = reportRequest.getFechaIngresada() + "00:00:00";
+    public ReportResponse generarReport(String fecha) {
+        String fechaSolicitada = fecha + "00:00:00";
         Timestamp fechaTimestamp = Timestamp.valueOf(fechaSolicitada);
 
         List<ReportVo> lisResultadosVo = reportDao.obtenerReportesPorFecha(fechaTimestamp);
-
         ReportResponse response = new ReportResponse();
-        response.setFecha(reportRequest.getFechaIngresada());
+        response.setFecha(fecha);
         response.setTotalCampana(lisResultadosVo.size());
         response.setCampanas(lisResultadosVo);
 
         return response;
+
     }
 }
