@@ -2,6 +2,7 @@ package com.middleware.reports.dao.impl;
 
 import com.middleware.reports.dao.ReportDao;
 import com.middleware.reports.mapper.CampanaRowMapper;
+import com.middleware.reports.mapper.DetaCampRowMapper;
 import com.middleware.reports.vo.ReportVo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -16,9 +17,15 @@ public class ReportDaoimpl implements ReportDao {
 
     @Override
     public List<ReportVo> obtenerReportesPorFecha(Timestamp fecha) {
-        String sql = "{call sp_obtener_mensajes(?,?,?,?)}";
-        Object[] params = new Object[]{fecha, 1000, 0};
-        //retornamos un metodo con los parametros que necesita
-        return jdbcTemplate.query(sql, params, new CampanaRowMapper());
+        String sql = "{call sp_obtener_mensajes(?,?}";
+        return jdbcTemplate.query(sql, new Object[]{fecha}, new CampanaRowMapper());
     }
+
+    @Override
+    public List<ReportVo.DetalleVo> obtenerDetallesPorFecha(Long idCampana) {
+        String sql = "{call sp_obtener_detalles_campanas(?,?)}";
+        return jdbcTemplate.query(sql, new Object[]{idCampana}, new DetaCampRowMapper());
+
+    }
+
 }
