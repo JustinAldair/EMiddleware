@@ -7,5 +7,5 @@ import java.util.List;
 
 public interface ReportDao {
     List<ReportVo> obtenerReportesPorFecha(Timestamp fecha);
-    List<ReportVo.DetalleVo> obtenerDetallesPorFecha(Long idCampana);
+    List<ReportVo.DetalleVo> obtenerDetallesPorCampaña(Long idCampana);
 }

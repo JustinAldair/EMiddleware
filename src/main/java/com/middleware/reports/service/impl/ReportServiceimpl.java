@@ -22,7 +22,7 @@ public class ReportServiceimpl implements ReportService {
 
     @Override
     public ReportResponse generarReport(String fecha) {
-        String fechaSolicitada = fecha + "00:00:00";
+        String fechaSolicitada = fecha + " 00:00:00";
         Timestamp fechaTimestamp = Timestamp.valueOf(fechaSolicitada);
 
         List<ReportVo> lisResultadosVo = reportDao.obtenerReportesPorFecha(fechaTimestamp);

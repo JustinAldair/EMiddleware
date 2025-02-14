@@ -17,12 +17,12 @@ public class ReportDaoimpl implements ReportDao {
 
     @Override
     public List<ReportVo> obtenerReportesPorFecha(Timestamp fecha) {
-        String sql = "{call sp_obtener_mensajes(?,?}";
+        String sql = "{call sp_obtener_mensajes(?,?)}";
         return jdbcTemplate.query(sql, new Object[]{fecha}, new CampanaRowMapper());
     }
 
     @Override
-    public List<ReportVo.DetalleVo> obtenerDetallesPorFecha(Long idCampana) {
+    public List<ReportVo.DetalleVo> obtenerDetallesPorCampaña(Long idCampana) {
         String sql = "{call sp_obtener_detalles_campanas(?,?)}";
         return jdbcTemplate.query(sql, new Object[]{idCampana}, new DetaCampRowMapper());
 
